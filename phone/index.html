@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮回•欢迎</title>
+    <style>
+        body {
+            background-color: aqua;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .floating-text {
+            font-size: 30px;
+            color: white;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        .game-title {
+            font-size: 48px;
+            color: blue;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        .separator {
+            width: 100%;
+            border-bottom: 1px solid white;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: floatUp 3s ease-in-out forwards;
+        }
+        
+        #popupContainer {
+            top: 50%;
+            left: 25%;
+            transform: translate(-1%, -50%);
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50%) translateX(-50%);
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(-40%) translateX(40%) rotate(-20deg);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-20%) translateX(-20%) rotate(20deg);
+            }
+            45% {
+                opacity: 1;
+                transform: translateY(-10%) translateX(10%) rotate(-10deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5%) translateX(-5%) rotate(5deg);
+            }
+            75% {
+                opacity: 1;
+                transform: translateY(-2%) translateX(2%) rotate(-2deg);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-1%) translateX(1%) rotate(1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+        }
+        /* 省略CSS样式，保持不变 */
+        
+        .no-underline {
+            text-decoration: none;
+            color: white;
+            opacity: 0;
+            animation: floatUp 3s ease-in-out forwards;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-text">欢迎来到</div>
+    <div class="game-title">《轮回》</div>
+    <div class="separator"></div>
+    <a href="http://snxdm.github.io/heavy/introduce/information" class="no-underline">点击继续</a>
+
+    <!-- 用于显示弹窗的容器 -->
+    <div id="popupContainer"></div>
+
+    <script>
+        fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/heavy/prompt-text-detection/maintenance/maintenance-inspection/maintenance-inspectionmaintenance-inspection.txt')
+            .then(response => response.text())
+            .then(data => {
+                if (data.trim() === '开') {
+                    window.location.href = 'https://snxdm.github.io/heavy/prompt-text-detection/maintenance';
+                }
+                // 如果是“关”，什么也不做
+            })
+            .catch(error => console.error('获取文本失败:', error));
+
+        // 弹窗逻辑
+        fetch('https://snxdm.github.io/heavy/prompt-text-detection/update')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('popupContainer').innerHTML = html;
+
+                document.getElementById('closeBtn').addEventListener('click', function() {
+                    document.getElementById('popup').style.animation = 'bounceOut 0.5s ease-in-out';
+                    setTimeout(function() {
+                        document.getElementById('popup').style.display = 'none';
+                    }, 500);
+                });
+            })
+            .catch(error => console.error('Error fetching external page:', error));
+    </script>
+</body>
+
+</html>
