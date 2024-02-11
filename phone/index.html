@@ -113,7 +113,7 @@
             .catch(error => console.error('获取文本失败:', error));
 
         // 弹窗逻辑
-        fetch('https://snxdm.github.io/heavy/prompt-text-detection/update')
+        fetch('https://snxdm.github.io/phone/heavy/p_m/upd')
             .then(response => response.text())
             .then(html => {
                 document.getElementById('popupContainer').innerHTML = html;
