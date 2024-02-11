@@ -39,12 +39,7 @@
             opacity: 0;
             animation: floatUp 3s ease-in-out forwards;
         }
-        
-        #popupContainer {
-            top: 50%;
-            left: 25%;
-            transform: translate(-1%, -50%);
-        }
+       
         
         @keyframes floatUp {
             0% {
@@ -80,7 +75,7 @@
                 transform: translateY(0) translateX(0) rotate(0deg);
             }
         }
-        /* 省略CSS样式，保持不变 */
+        /* 省略你的CSS样式，保持不变 */
         
         .no-underline {
             text-decoration: none;
@@ -102,31 +97,48 @@
     <div id="popupContainer"></div>
 
     <script>
-        fetch('link')
+        // 检查upd.html文件是否存在
+        fetch('https://snxdm.github.io/phone/heavy/p_m/upd') // 获取upd.html内容
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('获取失败');
+                }
+                return response.text(); // 将响应转换为文本
+            })
+            .then(data => {
+                document.getElementById('popupContainer').innerHTML = data; // 将upd.html内容插入到popupContainer中
+                // 执行弹窗的显示逻辑
+                openPopup();
+            })
+            .catch(error => console.error('获取文本失败:', error));
+
+        // 显示弹窗
+        function openPopup() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        // 关闭弹窗
+        function closePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.animation = "fadeOut 0.3s ease-out";
+            setTimeout(function() {
+                popup.style.display = "none";
+                popup.style.animation = "";
+            }, 300);
+            document.getElementById("overlay").style.display = "none";
+        }
+        
+        //维护检测
+        fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/heavy/prompt-text-detection/maintenance/maintenance-inspection/maintenance-inspectionmaintenance-inspection.txt')
             .then(response => response.text())
             .then(data => {
                 if (data.trim() === '开') {
-                    window.location.href = 'https://snxdm.github.io/phone/heavy/p_m/w_m/t_m_m/t_m_m.txt';
+                    window.location.href = 'https://snxdm.github.io/heavy/prompt-text-detection/maintenance';
                 }
                 // 如果是“关”，什么也不做
             })
             .catch(error => console.error('获取文本失败:', error));
-
-        // 弹窗逻辑
-        fetch('https://snxdm.github.io/phone/heavy/p_m/upd')
-            .then(response => response.text())
-            .then(html => {
-                console.log("Popup content:", html);
-                document.getElementById('popupContainer').innerHTML = html;
-
-                document.getElementById('closeBtn').addEventListener('click', function() {
-                    document.getElementById('popup').style.animation = 'bounceOut 0.5s ease-in-out';
-                    setTimeout(function() {
-                        document.getElementById('popup').style.display = 'none';
-                    }, 500);
-                });
-            })
-            .catch(error => console.error('Error fetching external page:', error));
     </script>
 </body>
 
