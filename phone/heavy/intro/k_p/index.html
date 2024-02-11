@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮回•主要人员</title>
+    <style>
+    body {
+            background-color: aqua;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'hanyishufajian';
+        }
+        
+        #popupContainer {
+            top: 50%;
+            left: 25%;
+            transform: translate(-12%, -50%);
+        }
+        
+        .floating-text {
+            font-size: 24px;
+            color: white;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        .game-title {
+            font-size: 48px;
+            color: black;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        .no-underline {
+            text-decoration: none;
+            color: white;
+            font-size: 10px;
+            animation-delay: 3s;
+            animation: floatUp 3s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        iframe {
+            border: none;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50%) translateX(-50%);
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(-40%) translateX(40%) rotate(-20deg);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-20%) translateX(-20%) rotate(20deg);
+            }
+            45% {
+                opacity: 1;
+                transform: translateY(-10%) translateX(10%) rotate(-10deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5%) translateX(-5%) rotate(5deg);
+            }
+            75% {
+                opacity: 1;
+                transform: translateY(-2%) translateX(2%) rotate(-2deg);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-1%) translateX(1%) rotate(1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+        }
+        
+        @font-face {
+            font-family: 'hanyishufajian';
+            src: url('/heavy/ttf/hanyishufajian.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'dingdingjinbuti';
+            src: url('/heavy/ttf/dingdingjinbuti.ttf') format('truetype');
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="game-title">编写人员</div>
+    <div class="floating-text">
+        <span style="color: red;">
+      <li>甲同志</li>
+      <li>乙同志</li>
+      <li>丁同志</li>
+      <li>丈令其</li>
+    </span>
+    </div>
+    <div class="game-title">合作伙伴</div>
+    <div class="floating-text">
+        <span style="color: blue;">
+    <li>正Q集团</li>
+  </span>
+    </div>
+    <a href="http://snxdm.github.io/phone/heavy/intro/c_i" class="no-underline">点击继续</a>
+    <div id="content"></div>
+
+    </script>
+</body>
+
+</html>
