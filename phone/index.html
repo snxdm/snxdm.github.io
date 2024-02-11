@@ -102,11 +102,11 @@
     <div id="popupContainer"></div>
 
     <script>
-        fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/heavy/prompt-text-detection/maintenance/maintenance-inspection/maintenance-inspectionmaintenance-inspection.txt')
+        fetch('link')
             .then(response => response.text())
             .then(data => {
                 if (data.trim() === '开') {
-                    window.location.href = 'https://snxdm.github.io/heavy/prompt-text-detection/maintenance';
+                    window.location.href = 'https://snxdm.github.io/phone/heavy/p_m/w_m/t_m_m/t_m_m.txt';
                 }
                 // 如果是“关”，什么也不做
             })
@@ -116,6 +116,7 @@
         fetch('https://snxdm.github.io/phone/heavy/p_m/upd')
             .then(response => response.text())
             .then(html => {
+                console.log("Popup content:", html);
                 document.getElementById('popupContainer').innerHTML = html;
 
                 document.getElementById('closeBtn').addEventListener('click', function() {
