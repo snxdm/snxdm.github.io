@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮回•观者感受</title>
+    <style>
+        body {
+            background-color: aqua;
+            font-family: 'hanyishufajian';
+        }
+        
+        .content {
+            background-color: lightcyan;
+            padding: 10px;
+            border-radius: 10px;
+            /* 调整这个值以改变圆角的弧度 */
+        }
+        
+        .floating-text {
+            color: black;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        .floating-text:nth-child(1) {
+            animation-delay: 0.5s;
+            /* 第一个动画延迟0.5秒 */
+        }
+        
+        .floating-text:nth-child(2) {
+            animation-delay: 1s;
+            /* 第二个动画延迟1秒 */
+        }
+        
+        .floating-text:nth-child(3) {
+            animation-delay: 2s;
+            /* 第三个动画延迟2秒 */
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50%) translateX(-50%);
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(-40%) translateX(40%) rotate(-20deg);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-20%) translateX(-20%) rotate(20deg);
+            }
+            45% {
+                opacity: 1;
+                transform: translateY(-10%) translateX(10%) rotate(-10deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5%) translateX(-5%) rotate(5deg);
+            }
+            75% {
+                opacity: 1;
+                transform: translateY(-2%) translateX(2%) rotate(-2deg);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-1%) translateX(1%) rotate(1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+        }
+        
+        @font-face {
+            font-family: 'hanyishufajian';
+            src: url('/heavy/ttf/hanyishufajian.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'dingdingjinbuti';
+            src: url('/heavy/ttf/dingdingjinbuti.ttf') format('truetype');
+        }
+    </style>
+</head>
+
+<body>
+    <div class='floating-text'>
+        <div class="content">
+            <p>“𝘿𝙤𝙣'𝙩 𝙘𝙖𝙧𝙚 𝙖𝙗𝙤𝙪𝙩 𝙬𝙤𝙧𝙡𝙙𝙡𝙮 𝙚𝙮𝙚𝙨 𝙩𝙤 𝙥𝙪𝙧𝙨𝙪𝙚 𝙮𝙤𝙪𝙧 𝙤𝙬𝙣 𝙡𝙞𝙜𝙝”</p>
+            <p>丈令其------感受</p>
+
+        </div>
+    </div>
+
+    <div class='floating-text'>
+        <div class="content">
+            <p>我重生了，重生在墓土，上一世我被冥龙撞了200000000000个翼，这一世我要夺回我的所有……v我 50听续集</p>
+            <p>凉令洁------感受</p>
+
+        </div>
+    </div>
+
+    <div class='floating-text'>
+        <div class="content">
+            <p>风纷燕舞花断伤， 柳垂轻拂夜寂茫。 梦回古巷情难忘， 雨打芭蕉声更凉。
+            </p>
+            <p>培根------感受</p>
+
+        </div>
+    </div>
+</body>
+
+</html>
