@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮回•核心观念</title>
+    <style>
+        body {
+            background-color: aqua;
+            /* 背景颜色不变 */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'hanyishufajian';
+        }
+        
+        .floating-text {
+            font-size: 35px;
+            color: #333333;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        .publisher-info {
+            font-size: 23px;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        #ioButton {
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            border: none;
+            background-color: transparent;
+            margin-top: 20px;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50%) translateX(-50%);
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(-40%) translateX(40%) rotate(-20deg);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-20%) translateX(-20%) rotate(20deg);
+            }
+            45% {
+                opacity: 1;
+                transform: translateY(-10%) translateX(10%) rotate(-10deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5%) translateX(-5%) rotate(5deg);
+            }
+            75% {
+                opacity: 1;
+                transform: translateY(-2%) translateX(2%) rotate(-2deg);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-1%) translateX(1%) rotate(1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+        }
+        
+        .no-underline {
+            text-decoration: none;
+            /* 移除下划线 */
+            color: white;
+            /* 设置链接颜色 */
+            animation: floatUp 3s ease-in-out forwards;
+            margin-bottom: 20px;
+            font-size: 10px;
+        }
+        
+        @font-face {
+            font-family: 'hanyishufajian';
+            src: url('/heavy/ttf/hanyishufajian.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'dingdingjinbuti';
+            src: url('/heavy/ttf/dingdingjinbuti.ttf') format('truetype');
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-text">核心思想</div>
+
+    <div class="publisher-info">
+        <span style="color: darkgreen;">富强</span>
+        <span style="color: darkblue ;">民主</span>
+        <span style="color: #00FF00;">文明</span>
+    </div>
+
+    <div class="publisher-info">
+        <span style="color: blue ;">和谐</span>
+        <span style="color: #FFA500;">自由</span>
+        <span style="color: darkred;">平等</span>
+    </div>
+
+    <div class="publisher-info">
+        <span style="color: darkgreen;">公正</span>
+        <span style="color: darkblue;">法制</span>
+        <span style="color: #00FF00;">爱国</span>
+    </div>
+
+    <div class="publisher-info">
+        <span style="color: blue ;">敬业</span>
+        <span style="color: red;">诚信</span>
+        <span style="color: darkred;">友善</span>
+    </div>
+
+
+    <a href="http://snxdm.github.io/phone/heavy/intro/v_e" class="no-underline">点击继续</a>
+    </script>
+</body>
+
+</html>
