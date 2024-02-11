@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮回•嘉宾</title>
+    <style>
+        body {
+            background-color: aqua;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'hanyishufajian';
+        }
+        
+        .floating-text {
+            font-size: 24px;
+            color: white;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        .game-title {
+            font-size: 48px;
+            color: black;
+            opacity: 0;
+            animation: floatUp 2s ease-in-out forwards;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50%) translateX(-50%);
+            }
+            15% {
+                opacity: 1;
+                transform: translateY(-40%) translateX(40%) rotate(-20deg);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-20%) translateX(-20%) rotate(20deg);
+            }
+            45% {
+                opacity: 1;
+                transform: translateY(-10%) translateX(10%) rotate(-10deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5%) translateX(-5%) rotate(5deg);
+            }
+            75% {
+                opacity: 1;
+                transform: translateY(-2%) translateX(2%) rotate(-2deg);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-1%) translateX(1%) rotate(1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+        }
+        
+        .no-underline {
+            text-decoration: none;
+            /* 移除下划线 */
+            color: white;
+            /* 设置链接颜色 */
+            opacity: 0;
+            animation: floatUp 3s ease-in-out forwards;
+            font-size: 10px;
+        }
+        
+        @font-face {
+            font-family: 'hanyishufajian';
+            src: url('/heavy/ttf/hanyishufajian.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'dingdingjinbuti';
+            src: url('/heavy/ttf/dingdingjinbuti.ttf') format('truetype');
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-title">特邀人员</div>
+
+
+    <div class="floating-text">
+        <span style="color: blue;">培根&nbsp;&nbsp;</span>
+        <span style="color: purple;">反子千</span>
+    </div>
+    <div class="floating-text">
+        <span style="color: brown;">七鱼疯&nbsp;</span>
+        <span style="color: yellow;">颂纬西&nbsp;</span>
+        <span style="color: green;">缺德憨</span>
+    </div>
+    <a href="http://snxdm.github.io/phone/heavy/intro/k_p" class="no-underline">点击继续</a>
+
+
+</body>
+
+</html>
