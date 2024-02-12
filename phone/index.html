@@ -129,16 +129,6 @@
             document.getElementById("overlay").style.display = "none";
         }
         
-        //维护检测
-        fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/heavy/prompt-text-detection/maintenance/maintenance-inspection/maintenance-inspectionmaintenance-inspection.txt')
-            .then(response => response.text())
-            .then(data => {
-                if (data.trim() === '开') {
-                    window.location.href = 'https://snxdm.github.io/heavy/prompt-text-detection/maintenance';
-                }
-                // 如果是“关”，什么也不做
-            })
-            .catch(error => console.error('获取文本失败:', error));
     </script>
 </body>
 
