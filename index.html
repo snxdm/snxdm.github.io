@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>设备跳转</title>
     <script>
+                //维护检测
+        fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/phone/heavy/p_m/w_m/t_m_m/t_m_m.txt')
+            .then(response => response.text())
+            .then(data => {
+                if (data.trim() === '开') {
+                    window.location.href = 'https://snxdm.github.io/heavy/prompt-text-detection/maintenance';
+                }
+                // 如果是“关”，什么也不做
+            })
+            .catch(error => console.error('获取文本失败:', error));
+        
+
+        
         if (window.innerWidth <= 768) {  // 假设屏幕宽度小于等于 768px 视为手机
             window.location.href = "https://snxdm.github.io/phone";
         } else {
