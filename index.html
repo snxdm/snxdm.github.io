@@ -1,31 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>设备跳转</title>
-    <script>
-                //维护检测
-        fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/phone/heavy/p_m/w_m/t_m_m/t_m_m.txt')
-            .then(response => response.text())
-            .then(data => {
-                if (data.trim() === '开') {
-                    window.location.href = 'https://snxdm.github.io/heavy/prompt-text-detection/maintenance';
-                }
-                // 如果是“关”，什么也不做
-            })
-            .catch(error => console.error('获取文本失败:', error));
-        
+    <title>轮回•导航</title>
 
-        
-        if (window.innerWidth <= 768) {  // 假设屏幕宽度小于等于 768px 视为手机
-            window.location.href = "https://snxdm.github.io/phone";
-        } else {
-            window.location.href = "https://snxdm.github.io/pc";
+    <style>
+        body {
+            background-color: aqua;
         }
-    </script>
+
+        p {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <p>请稍等……</p>
+    <p></p>
+
+    <script>
+        // 事先处理JavaScript代码
+        document.addEventListener('DOMContentLoaded', () => {
+            // 查询p标签
+            const pTag = document.querySelector('p');
+
+            // 更新p标签的文本内容
+            pTag.innerText = "正在进行维护检测，请等候...";
+
+            //维护检测
+            fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/phone/heavy/p_m/w_m/t_m_m/t_m_m.txt')
+                .then(response => response.text())
+                .then(data => {
+                    // 检测文本内容
+                    if (data.trim() === "开") {
+                    console.log("检测到‘开’，已跳转")
+
+                        // 维护开启
+                        pTag.innerText = "维护检测完毕，结果为‘开’，正在重新导航";
+                        window.location.href = "https://snxdm.github.io/phone/heavy/p_m/w_m/index.html";
+                        
+
+                    } else if (data.trim() === "关") {
+                        
+                        console.log("检测到‘关’，未跳转，已执行设备检测");
+                        
+                        // 维护关闭，且执行设备检测
+                        pTag.innerText = "维护检测完毕，结果为‘关’，正在重新导航";
+                        if (window.innerWidth <= 768) {
+                            window.location.href = "https://snxdm.github.io/phone";
+                        } else {
+                            window.location.href = "https://snxdm.github.io/pc/";
+                        }
+
+                    } else {
+                        //不合理
+                        console.error("检测到‘非合理文本’")
+                        pTag.innerText = "维护检测失败，检测到非合理文本，请尝试联系此邮箱来进行解决\n\nsnxdma@gmail.com";
+                        pTag.style.color = 'red';
+                    }
+                })
+                .catch(error => console.error('发生错误:', error));
+        });
+    </script>
 </body>
+
 </html>
