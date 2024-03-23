@@ -45,7 +45,12 @@
                         content: content,
                     }),
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('上传图片时发生错误：' + response.statusText);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     var imageUrl = data.content.download_url;
                     var output = document.getElementById('output');
@@ -53,8 +58,8 @@
                     output.innerHTML += '<p>Image uploaded successfully! <a href="' + imageUrl + '">View Image</a></p>';
                 })
                 .catch(error => {
-                    console.error('Error uploading image:', error);
-                    alert('上传图片时发生错误，请重试！');
+                    console.error('Error uploading image:', error.message);
+                    alert('上传图片时发生错误：' + error.message);
                 });
             };
         });
