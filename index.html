@@ -1,70 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>轮回•导航</title>
-
-    <style>
-        body {
-            background-color: aqua;
-        }
-
-        p {
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+    <title>Upload Image to GitHub</title>
 </head>
-
 <body>
-    <p></p>
+    <h2>Upload Image to GitHub</h2>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" accept="image/*" required>
+        <button type="submit" id="uploadBtn">Upload Image</button>
+    </form>
+    <div id="output"></div>
 
     <script>
-        // 事先处理JavaScript代码
-        document.addEventListener('DOMContentLoaded', () => {
-            // 查询p标签
-            const pTag = document.querySelector('p');
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
 
-            // 更新p标签的文本内容
-            pTag.innerText = "正在进行维护检测，请等候...";
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0]; // 获取上传的文件
+            if (!file) {
+                alert('请选择要上传的图片文件！');
+                return;
+            }
 
-            //维护检测
-            fetch('https://raw.githubusercontent.com/snxdm/snxdm.github.io/main/phone/heavy/p_m/w_m/t_m_m/t_m_m.txt')
-                .then(response => response.text())
-                .then(data => {
-                    // 检测文本内容
-                    if (data.trim() === "开") {
-                    console.log("检测到‘开’，已跳转")
+            var formData = new FormData();
+            formData.append('file', file); // 将文件添加到 FormData 对象中
 
-                        // 维护开启
-                        pTag.innerText = "维护检测完毕，结果为‘开’，正在重新导航";
-                        window.location.href = "https://snxdm.github.io/phone/heavy/p_m/w_m/index.html";
-                        
+            // 将文件内容转换为 Base64 编码
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                var content = reader.result.split(',')[1]; // 去掉 base64 头部信息
 
-                    } else if (data.trim() === "关") {
-                        
-                        console.log("检测到‘关’，未跳转，已执行设备检测");
-                        
-                        // 维护关闭，且执行设备检测
-                        pTag.innerText = "维护检测完毕，结果为‘关’，正在重新导航";
-                        if (window.innerWidth <= 768) {
-                            window.location.href = "https://snxdm.github.io/phone";
-                        } else {
-                            window.location.href = "https://snxdm.github.io/pc/";
-                        }
-
-                    } else {
-                        //不合理
-                        console.error("检测到‘非合理文本’")
-                        pTag.innerText = "维护检测失败，检测到非合理文本，请尝试联系此邮箱来进行解决\n\nsnxdma@gmail.com";
-                        pTag.style.color = 'red';
-                    }
+                // 使用 fetch 发起 POST 请求上传图片
+                fetch('https://api.github.com/repos/snxdm/snxdm.github.io/contents/', {
+                    method: 'POST',
+                    headers: {
+                        Authorization: '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',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: 'Upload image',
+                        content: content,
+                    }),
                 })
-                .catch(error => console.error('发生错误:', error));
+                .then(response => response.json())
+                .then(data => {
+                    var imageUrl = data.content.download_url;
+                    var output = document.getElementById('output');
+                    output.innerHTML = '<img src="' + imageUrl + '" alt="Uploaded Image">';
+                    output.innerHTML += '<p>Image uploaded successfully! <a href="' + imageUrl + '">View Image</a></p>';
+                })
+                .catch(error => {
+                    console.error('Error uploading image:', error);
+                    alert('上传图片时发生错误，请重试！');
+                });
+            };
         });
     </script>
 </body>
-
 </html>
